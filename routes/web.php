@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LatihanController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,3 +19,21 @@ Route::post('action-tambah', [LatihanController::class, 'actionTambah'])->name('
 Route::post('action-kurang', [LatihanController::class, 'actionKurang'])->name('action-kurang');
 Route::post('action-kali', [LatihanController::class, 'actionKali'])->name('action-kali');
 Route::post('action-bagi', [LatihanController::class, 'actionBagi'])->name('action-bagi');
+
+//kalo di views nya pake url, di web gausah pake ->name
+//kalo di views nya pake royute, di web pake ->name
+
+Route::get('profile', [ProfileController::class, 'index']);
+
+//log in
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('dashboard', function () {
+    return view('dashboard.index');
+});
+
+Route::post('action-login', [LoginController::class, 'actionLogin'])->name('action-login');
+Route::post('action-logout', [LoginController::class, 'actionLogout'])->name('action-logout');
+
+Route::get('dashboard', function() {
+    return view('dashboard.index');
+})->middleware('auth');
