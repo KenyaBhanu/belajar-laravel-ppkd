@@ -34,6 +34,15 @@ Route::get('dashboard', function () {
 Route::post('action-login', [LoginController::class, 'actionLogin'])->name('action-login');
 Route::post('action-logout', [LoginController::class, 'actionLogout'])->name('action-logout');
 
-Route::get('dashboard', function() {
+// Route::middleware(['auth', 'prevent-back'])->group(function () {
+//     Route::get('dashboard', function () {
+//         return view('dashboard.index');
+//     });
+//     Route::resource('user', \App\Http\Controllers\UserController::class); //resource bisa menggantikan post, get, put etc
+// });
+
+Route::get('dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
+Route::resource('user', \App\Http\Controllers\UserController::class);
+Route::resource('role', \App\Http\Controllers\RoleController::class);
