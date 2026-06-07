@@ -354,17 +354,24 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            {{-- <form action="{{ route('action-logout') }}" method="post"></form>
-                            <a href="" class='sidebar-link'>
-                                <i class="bi bi-cash"></i>
+                        <li class="sidebar-item">
+                            <a href="#" class='sidebar-link' onclick="document.getElementById('logoutForm').submit(); return false;">
+                                <i class="bi bi-box-arrow-right"></i>
                                 <span>Log Out</span>
-                            </a> --}}
-                            <form action="{{ route('action-logout') }}" method="post">
+                            </a>
+                            <form id="logoutForm" action="{{ route('action-logout') }}" method="post" class="hidden">
                                 @csrf
-                                <button class="btn btn-outline-danger">Log Out</button>
                             </form>
                         </li>
+                        {{-- <form action="{{ route('action-logout') }}" method="post">
+                            @csrf
+                            <li class="sidebar-item  ">
+                                <a href="" class='sidebar-link'>
+                                    <i class="bi bi-cash"></i>
+                                    <span>Log Out</span>
+                                </a>
+                            </li>
+                        </form> --}}
 
                     </ul>
                 </div>
