@@ -118,23 +118,41 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="{{ route('locker.index') }}" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
+                        <li class="sidebar-item has-sub">
+                            <a href="#" class="sidebar-link">
+                                <i class="bi bi-person-badge-fill"></i>
                                 <span>Locker Management</span>
                             </a>
+                            <ul class="submenu">
+                                <li class="submenu-item">
+                                    <a href="{{ route('locker.index') }}">
+                                        <span>Locker Management</span>
+                                    </a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('key.index') }}">
+                                        <span>Key Management</span>
+                                    </a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('major.index') }}">
+                                        <span>Major Management</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="{{ route('key.index') }}" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Key Management</span>
+                        <li class="sidebar-item has-sub">
+                            <a href="#" class="sidebar-link">
+                                <i class="bi bi-person-badge-fill"></i>
+                                <span>Student Management</span>
                             </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="{{ route('major.index') }}" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Major Management</span>
-                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item">
+                                    <a href="{{ route('student.index') }}">
+                                        <span>Student</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="sidebar-title">Forms &amp; Tables</li>

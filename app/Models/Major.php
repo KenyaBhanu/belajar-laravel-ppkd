@@ -10,4 +10,9 @@ class Major extends Model
         'name',
         'is_active'
     ];
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }
