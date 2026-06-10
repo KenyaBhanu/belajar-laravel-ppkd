@@ -69,13 +69,7 @@
                         </li>
                         <li class="sidebar-item has-sub">
                             <a href="#" class="sidebar-link">
-                                <i class="bi bi-person-badge-fill"></i>
-                                <span>Locker Management</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item has-sub">
-                            <a href="#" class="sidebar-link">
-                                <i class="bi bi-person-badge-fill"></i>
+                                <i class="bi bi-person-circle"></i>
                                 <span>Student Management</span>
                             </a>
                             <ul class="submenu">
@@ -86,15 +80,15 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <li class="sidebar-title">Forms &amp; Tables</li>
-
                         <li class="sidebar-item  ">
                             <a href="{{ route('instructor.index') }}" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-medical-fill"></i>
                                 <span>Instructor</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-title">Forms &amp; Tables</li>
+
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>

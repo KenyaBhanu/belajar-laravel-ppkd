@@ -14,6 +14,7 @@
                         <th>No</th>
                         <th>Major</th>
                         <th>Name</th>
+                        <th>Email</th>
                         <th>Phone</th>
                         <th>Action</th>
                     </tr>
@@ -24,6 +25,7 @@
                         <td>{{ $index += 1 }}</td>
                         <td>{{ $instructor->major->name ?? '' }}</td>
                         <td>{{ $instructor->name ?? '' }}</td>
+                        <td>{{ $instructor->user->email ?? '' }}</td>
                         <td>{{ $instructor->phone ?? '' }}</td>
                         <td>
                             <a href="{{ route('instructor.edit', $instructor->id) }}" class="btn btn-primary d-inline">

@@ -24,6 +24,14 @@
                 <div class="mb-3">
                     <label for="">Phone Number</label>
                     <input type="text" class="form-control" placeholder="Enter phone number" name="phone" value="{{ $edit->phone }}" required>
+                </div>                
+                <div class="mb-3">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" placeholder="Enter email" name="email" value="{{ $edit->user->email ?? '' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" placeholder="Enter password" name="password">
                 </div>
                 <div class="mb-3 d-flex justify-content-end align-items-center">
                     <button type="submit" class="btn btn-primary">Save</button>

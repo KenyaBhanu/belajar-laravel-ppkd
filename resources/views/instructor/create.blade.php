@@ -18,19 +18,39 @@
                 </div>
                 <div class="mb-3">
                     <label for="">Name *</label>
-                    <input type="text" class="form-control" placeholder="Enter name" name="name" required>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" name="name">
+                    @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="">Phone Number *</label>
-                    <input type="text" class="form-control" placeholder="Enter phone number" name="phone" required>
+                    <input type="text" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter phone number" name="phone">
+                    @error('phone')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="">Email *</label>
-                    <input type="email" class="form-control" placeholder="Enter email address" name="email" required>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email address" name="email" value="{{ old('email') }}">
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="">Password *</label>
-                    <input type="password" class="form-control" placeholder="Enter password" name="password" required>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password" name="password">
+                    @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3 d-flex justify-content-end align-items-center">
                     <button type="submit" class="btn btn-primary">Save</button>

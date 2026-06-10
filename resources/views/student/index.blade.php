@@ -25,7 +25,7 @@
                         <td>{{ $index += 1 }}</td>
                         <td>{{ $student->major->name ?? '' }}</td>
                         <td>{{ $student->name ?? '' }}</td>
-                        <td>{{ $student->email ?? '' }}</td>
+                        <td>{{ $student->user->email ?? '' }}</td>
                         <td>{{ $student->phone ?? '' }}</td>
                         <td>
                             <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary d-inline">
