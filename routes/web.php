@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\KeyController;
 use App\Http\Controllers\LatihanController;
 use App\Http\Controllers\LockerController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Models\Instructor;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -54,3 +56,4 @@ Route::resource('locker', LockerController::class);
 Route::resource('key', KeyController::class);
 Route::resource('major', MajorController::class);
 Route::resource('student', StudentController::class);
+Route::resource('instructor', InstructorController::class);

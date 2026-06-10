@@ -3,15 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Student extends Model
+class Instructor extends Model
 {
     protected $fillable = [
+        'user_id',
         'major_id',
         'name',
-        'phone',
-        'user_id'
+        'phone'
     ];
 
     public function major()
@@ -21,6 +20,6 @@ class Student extends Model
 
     public function user()
     {
-        return $this->BelongsTo(User::class, 'user', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
