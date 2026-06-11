@@ -6,6 +6,7 @@ use App\Http\Controllers\LatihanController;
 use App\Http\Controllers\LockerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Models\Instructor;
@@ -52,6 +53,7 @@ Route::get('dashboard', function () {
 })->middleware('auth');
 Route::resource('user', \App\Http\Controllers\UserController::class);
 Route::resource('role', \App\Http\Controllers\RoleController::class);
+Route::resource('menu', MenuController::class);
 Route::resource('locker', LockerController::class);
 Route::resource('key', KeyController::class);
 Route::resource('major', MajorController::class);

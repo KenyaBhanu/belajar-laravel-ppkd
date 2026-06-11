@@ -12,6 +12,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- ganti pake yg dari pak tri --}}
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
@@ -64,6 +65,9 @@
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="{{ route('role.create') }}">Create Role</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ route('menu.index') }}">Menu</a>
                                 </li>
                             </ul>
                         </li>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Role;
 use App\Models\User;
+use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -27,7 +28,8 @@ class UserController extends Controller
     public function create()
     {
         $title = "Create New User";
-        return view('user.create', compact('title'));
+        $roles = Role::all();
+        return view('user.create', compact('title', 'roles'));
     }
 
     /**
@@ -38,11 +40,12 @@ class UserController extends Controller
         $validate = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'role_id' => 'required'
         ]);
 
         User::create($request->all());
-        // Alert::success('Success', 'Created user succesfully');
+        Alert::success('Success', 'Created user succesfully');
         return redirect()->to('user');
     }
 
