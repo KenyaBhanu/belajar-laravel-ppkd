@@ -12,7 +12,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- ganti pake yg dari pak tri --}}
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
@@ -37,13 +36,7 @@
                                     <a href="{{ route('major.index') }}">Major</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="extra-component-toastify.html">Toastify</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="extra-component-rating.html">Rating</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="extra-component-divider.html">Divider</a>
+                                    <a href="{{ route('locker.index') }}">Locker</a>
                                 </li>
                             </ul>
                         </li>
@@ -66,9 +59,6 @@
                                 <li class="submenu-item ">
                                     <a href="{{ route('role.create') }}">Create Role</a>
                                 </li>
-                                <li class="submenu-item ">
-                                    <a href="{{ route('menu.index') }}">Menu</a>
-                                </li>
                             </ul>
                         </li>
                         <li class="sidebar-item has-sub">
@@ -88,6 +78,12 @@
                             <a href="{{ route('instructor.index') }}" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-medical-fill"></i>
                                 <span>Instructor</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('menu.index') }}" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>Menu</span>
                             </a>
                         </li>
 

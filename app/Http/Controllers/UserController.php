@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -17,8 +19,15 @@ class UserController extends Controller
     {
         // $users = User::orderBy('id','desc')->get();
         // $users = User::orderByDesc('id')->get();
-        $users = User::latest()->get();
+        $users = User::with('role')->orderByDesc('id')->get();
         $title = "User Management";
+
+        $deleteTitle = "Delete user!";
+        $deleteText = "Are you sure you want to delete this user?";
+        confirmDelete($deleteTitle, $deleteText);
+
+        // baca docs, taro codes nya di dalam script di user/index
+
         return view('user.index', compact('users', 'title'));
     }
 
@@ -37,16 +46,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'name' => 'required',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
-            'role_id' => 'required'
         ]);
 
-        User::create($request->all());
-        Alert::success('Success', 'Created user succesfully');
-        return redirect()->to('user');
+        DB::beginTransaction();
+
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+            ]);
+
+            $user->roles()->sync($request->role_ids);
+            DB::commit();
+            Alert::success('Success!', 'Created user successfully!');
+            return redirect()->to('user');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::error('Failed!', $th->getMessage());
+            return back()->withInput();
+        }
     }
 
     /**
@@ -64,8 +87,9 @@ class UserController extends Controller
     {
         $title = "Edit User";
         $edit = User::find($id);
+        $roles = Role::get();
         // $edit = User::findOrFail($id);
-        return view('user.edit', compact('title', 'edit'));
+        return view('user.edit', compact('title', 'edit', 'roles'));
     }
 
     /**
@@ -73,16 +97,25 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email
-        ];
-        if (filled($request->password)) {
-            $data['password'] = $request->password;
-        }
+        DB::beginTransaction();
+        try {
+            $data = [
+                'name' => $request->name,
+                'email' => $request->email
+            ];
+            if (filled($request->password)) {
+                $data['password'] = $request->password;
+            }
 
-        User::find($id)->update($data);
-        return redirect()->to('user');
+            $user = User::findOrFail($id);
+            $user->update($data);
+            $user->roles()->sync($request->role_ids);
+            DB::commit();
+            return redirect()->to('user');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->withErrors($th->getMessage());
+        }
     }
     /**
      * Remove the specified resource from storage.
@@ -90,6 +123,7 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         User::find($id)->delete();
+        Alert::success('Success!', 'User deleted successfully!');
         return redirect()->to('user');
     }
 }

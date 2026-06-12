@@ -30,6 +30,16 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    public function role()
+    {
+        return $this->BelongsTo(Role::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -9,6 +9,7 @@ use App\Http\Controllers\MajorController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserRoleController;
 use App\Models\Instructor;
 use Illuminate\Support\Facades\Route;
 
@@ -59,3 +60,4 @@ Route::resource('key', KeyController::class);
 Route::resource('major', MajorController::class);
 Route::resource('student', StudentController::class);
 Route::resource('instructor', InstructorController::class);
+Route::resource('user-role', UserRoleController::class);

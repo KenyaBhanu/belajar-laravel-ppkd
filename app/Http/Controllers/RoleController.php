@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\Menu;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -59,7 +60,8 @@ class RoleController extends Controller
     {
         $title = "Edit Role";
         $edit = Role::find($id);
-        return view('role.edit', compact('title', 'edit'));
+        $parents = Menu::with('children')->whereNull('parent_id')->where('is_active', 1)->orderBy('sort_order')->get();
+        return view('role.edit', compact('title', 'edit', 'parents'));
     }
 
     /**
@@ -81,6 +83,7 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         Role::find($id)->delete();
+        Alert::success('Success!', 'Deleted role successfully!');
         return redirect()->to('role');
     }
 }
