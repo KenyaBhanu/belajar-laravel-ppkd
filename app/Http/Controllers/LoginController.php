@@ -22,6 +22,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect('dashboard');
         }
+        return back()->withErrors([
+            'email' => 'Incorrect email or password',
+        ])->onlyInput('email');
     }
 
     public function actionLogout(Request $request) {
